@@ -1,3 +1,4 @@
+from ast import Sub
 from xml.dom import ValidationErr
 from click import password_option
 from flask_wtf import FlaskForm
@@ -43,4 +44,7 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
 
